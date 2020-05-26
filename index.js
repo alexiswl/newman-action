@@ -1,11 +1,14 @@
 const core = require('@actions/core')
 const newman = require('newman')
+const util = require('util')
 
 init()
 
 async function init () {
   try {
     const get = core.getInput
+
+    console.log(util.inspect(get))	   
 
     const options = {
       collection: get('collection'),
