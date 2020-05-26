@@ -9,7 +9,7 @@ async function init () {
 
     const options = {
       collection: get('collection'),
-      environment: get('environment')
+      environment: JSON.parse(get('environment'))
     }
 
     runNewman(options)
@@ -21,8 +21,8 @@ async function init () {
 
 function runNewman (options) {
   newman.run({
-    collection: require(options.collection),
-    environment: require(options.environment),
+    collection: options.collection,
+    environment: options.environment,
     reporters: ['cli']
   }, process.exit)
 }
